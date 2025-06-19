@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Asignatura</title>
+</head>
+<body>
+    <h2>Registrar nueva asignatura</h2>
+    <form method="post">
+        <input type="text" name="nombre" placeholder="Nombre de la asignatura" required>
+        <input type="text" name="descripcion" placeholder="Descripción">
+        <button type="submit">Registrar</button>
+        {% if mensaje %}<div>{{ mensaje }}</div>{% endif %}
+    </form>
+</body>
+</html>
