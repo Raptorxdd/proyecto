@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Grupo</title>
+</head>
+<body>
+    <h2>Registrar nuevo grupo</h2>
+    <form method="post">
+        <input type="text" name="nombre" placeholder="Nombre del grupo (Ej: 1°A)" required>
+        <input type="number" name="grado" placeholder="Grado (1-5)" min="1" max="5" required>
+        <select name="institucion_id" required>
+            <option value="">Selecciona una institución</option>
+            {% for inst in instituciones %}
+                <option value="{{ inst[0] }}">{{ inst[1] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Registrar</button>
+        {% if mensaje %}<div>{{ mensaje }}</div>{% endif %}
+    </form>
+</body>
+</html>

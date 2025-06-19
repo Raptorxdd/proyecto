@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Institución</title>
+</head>
+<body>
+    <h2>Registrar nueva institución</h2>
+    <form method="post">
+        <input type="text" name="nombre" placeholder="Nombre de la institución" required>
+        <button type="submit">Registrar</button>
+        {% if mensaje %}<div>{{ mensaje }}</div>{% endif %}
+    </form>
+</body>
+</html>

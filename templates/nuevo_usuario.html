@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Usuario</title>
+</head>
+<body>
+    <h2>Registrar nuevo usuario</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Usuario" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="apellido" placeholder="Apellido">
+        <select name="rol_id" required>
+            <option value="">Selecciona un rol</option>
+            {% for rol in roles %}
+                <option value="{{ rol[0] }}">{{ rol[1] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Registrar</button>
+        {% if mensaje %}<div>{{ mensaje }}</div>{% endif %}
+    </form>
+</body>
+</html>

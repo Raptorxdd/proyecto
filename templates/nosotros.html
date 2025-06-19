@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nosotros</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #e3eaf6 60%, #fcfcd9 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+        }
+        header {
+            background: #7d93b2;
+            color: #222;
+            padding: 0.7em 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 2em;
+        }
+        nav a {
+            color: #222;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            margin: 0 1em;
+        }
+        .nosotros-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 48px auto 0 auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(92, 110, 145, 0.13);
+            overflow: hidden;
+            border-left: 10px solid #7d93b2;
+        }
+        .nosotros-img {
+            width: 260px;
+            min-width: 180px;
+            max-width: 280px;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            margin: 24px 0 24px 24px; /* Espacio arriba, abajo y a la izquierda */
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(92, 110, 145, 0.10);
+        }
+        .contenido {
+            padding: 2.5em 2.5em 2em 2.5em;
+            flex: 1;
+        }
+        h1 {
+            color: #3a4a6b;
+            margin-bottom: 0.5em;
+            font-size: 2.2em;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .subtitulo {
+            color: #5c6e91;
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        .texto {
+            margin-bottom: 1.5em;
+            font-size: 1.13em;
+            color: #333;
+        }
+        @media (max-width: 900px) {
+            .nosotros-main {
+                flex-direction: column;
+                border-left: 0;
+                border-top: 8px solid #7d93b2;
+            }
+            .nosotros-img {
+                width: 100%;
+                max-width: 100vw;
+                height: 160px;
+                max-height: 180px;
+                border-radius: 24px 24px 0 0;
+            }
+            .contenido {
+                padding: 1.5em 1em 1em 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/nosotros">Nosotros</a>
+            <a href="/apoyo">Apoyo</a>
+            <a href="/login">Iniciar Sesión</a>
+        </nav>
+    </header>
+    <div class="nosotros-main">
+        <img class="nosotros-img" src="{{ url_for('static', filename='img/educacion.png') }}" alt="Educación">
+        <div class="contenido">
+            <h1>Sobre Nosotros</h1>
+            <p class="texto">
+                Somos una plataforma comprometida con la prevención de la deserción escolar.<br>
+                Nuestro objetivo es brindar herramientas, recursos y acompañamiento a estudiantes, familias y docentes para que todos los jóvenes puedan completar su educación secundaria.
+            </p>
+            <div class="subtitulo">Misión</div>
+            <p class="texto">
+                Contribuir a la reducción de la deserción escolar ofreciendo apoyo integral, orientación y recursos a quienes más lo necesitan, promoviendo la permanencia y el éxito educativo de los estudiantes.
+            </p>
+            <div class="subtitulo">Visión</div>
+            <p class="texto">
+                Ser una plataforma de referencia nacional en la prevención de la deserción escolar, generando impacto positivo en la vida de los jóvenes y en el desarrollo de la sociedad.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

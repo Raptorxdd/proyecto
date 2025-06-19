@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sistema Escolar{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('admin_dashboard') }}">Inicio Admin</a> |
+        <a href="{{ url_for('nueva_institucion') }}">Nueva Institución</a> |
+        <a href="{{ url_for('nuevo_grupo') }}">Nuevo Grupo</a> |
+        <a href="{{ url_for('nueva_asignatura') }}">Nueva Asignatura</a> |
+        <a href="{{ url_for('nuevo_usuario') }}">Nuevo Usuario</a> |
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

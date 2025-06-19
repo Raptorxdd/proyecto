@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Panel de Administración</h2>
+<p>Bienvenido, administrador. Desde aquí puedes:</p>
+<ul>
+    <li><a href="{{ url_for('nueva_institucion') }}">Registrar nueva institución</a></li>
+    <li><a href="{{ url_for('nuevo_grupo') }}">Registrar nuevo grupo</a></li>
+    <li><a href="{{ url_for('nueva_asignatura') }}">Registrar nueva asignatura</a></li>
+    <li><a href="{{ url_for('nuevo_usuario') }}">Registrar nuevo usuario</a></li>
+</ul>
+{% endblock %}
