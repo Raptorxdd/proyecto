@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar asistencias</title>
+    <style>
+.panel-asistencias {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(58,74,107,0.10);
+    padding: 2.5em 2em 2em 2em;
+}
+.panel-asistencias h2 {
+    color: #3a4a6b;
+    text-align: center;
+    margin-bottom: 1em;
+}
+.panel-asistencias form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+}
+.panel-asistencias label {
+    color: #223055;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+}
+.panel-asistencias input[type="date"] {
+    padding: 0.7em;
+    border: 1px solid #3a4a6b55;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.2s;
+    margin-bottom: 1em;
+    width: 200px;
+}
+.panel-asistencias table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f4f6fb;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2em;
+}
+.panel-asistencias th, .panel-asistencias td {
+    padding: 1em;
+    text-align: center;
+}
+.panel-asistencias th {
+    background: #3a4a6b;
+    color: #fff;
+    font-weight: bold;
+}
+.panel-asistencias tr:nth-child(even) {
+    background: #eaf6ff;
+}
+.panel-asistencias tr:hover {
+    background: #d0e6ff;
+}
+.panel-asistencias input[type="checkbox"] {
+    width: 1.2em;
+    height: 1.2em;
+    accent-color: #3a4a6b;
+}
+.panel-asistencias button {
+    background: #3a4a6b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8em 1.5em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 1em;
+}
+.panel-asistencias button:hover {
+    background: #223055;
+}
+.mensaje {
+    background: #eaf6ff;
+    border: 1px solid #3a4a6b55;
+    border-radius: 6px;
+    padding: 1.2em;
+    color: #223055;
+    text-align: center;
+    margin-bottom: 1em;
+}
+.btn-volver {
+    display: block;
+    margin: 2em auto 0 auto;
+    background: #3a4a6b;
+    color: #fff;
+    padding: 0.6em 1.2em;
+    border-radius: 5px;
+    text-decoration: none;
+    width: fit-content;
+    transition: background 0.2s;
+    text-align: center;
+}
+.btn-volver:hover {
+    background: #223055;
+}
+    </style>
+</head>
+<body>
+<div class="panel-asistencias">
+    <h2>Registrar asistencias</h2>
+    {% if mensaje %}
+        <div class="mensaje">{{ mensaje }}</div>
+    {% endif %}
+    <form method="post">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Presente</th>
+            </tr>
+            {% for alumno in alumnos %}
+            <tr>
+                <td>{{ alumno[1] }}</td>
+                <td>{{ alumno[2] }}</td>
+                <td>
+                    <input type="checkbox" name="presente_{{ alumno[0] }}">
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Guardar asistencias</button>
+    </form>
+    <a href="{{ url_for('ver_alumnos_grupo', grupo_id=grupo_id) }}" class="btn-volver">Volver a alumnos</a>
+</div>
+</body>
+</html>
