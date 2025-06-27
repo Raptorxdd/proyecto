@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Estudiante</title>
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .logout-button {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            background: #e57373;
+            color: #fff;
+            padding: 0.7em 1.5em;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(58,74,107,0.04);
+            transition: background 0.2s, color 0.2s;
+        }
+        .logout-button:hover {
+            background: #b71c1c;
+        }
+        .panel-estudiante {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(58,74,107,0.10);
+            padding: 2.5em 2em 2em 2em;
+        }
+        .panel-estudiante h2 {
+            color: #3a4a6b;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        .panel-estudiante p {
+            text-align: center;
+            color: #223055;
+            margin-bottom: 2em;
+        }
+        .panel-estudiante ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+        .panel-estudiante li {
+            margin-bottom: 1.2em;
+            text-align: center;
+        }
+        .panel-estudiante a {
+            display: inline-block;
+            background: #3a4a6b;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.7em 1.5em;
+            border-radius: 8px;
+            font-size: 1.05em;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(58,74,107,0.04);
+        }
+        .panel-estudiante a:hover {
+            background: #223055;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('logout') }}" class="logout-button">Cerrar sesión</a>
+    <div class="panel-estudiante">
+        <h2>Registro de Estudiante</h2>
+        <p>Bienvenido, Apoderado. Desde aquí puedes consultar:</p>
+        <ul>
+            <li><a href="#">Tus asistencias</a></li>
+            <li><a href="#">Tus calificaciones</a></li>
+            <li><a href="#">Alertas recibidas</a></li>
+        </ul>
+    </div>
+</body>
+</html>

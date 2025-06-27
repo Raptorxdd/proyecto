@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recuperar contraseña</title>
+    <style>
+        body { background: #f4f6fb; font-family: 'Segoe UI', Arial, sans-serif; }
+        .recuperar-container { max-width: 400px; margin: 60px auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); padding: 2em; }
+        h2 { color: #3a4a6b; }
+        input, button { width: 100%; margin-bottom: 1em; padding: 0.7em; border-radius: 6px; border: 1px solid #ccc; }
+        button { background: #7d93b2; color: #fff; font-weight: bold; border: none; cursor: pointer; }
+        button:hover { background: #5c6e91; }
+        .mensaje { color: green; margin-bottom: 1em; }
+        .enlace { display: block; margin-top: 1em; text-align: right; }
+    </style>
+</head>
+<body>
+    <div class="recuperar-container">
+        <h2>¿Olvidaste tu contraseña?</h2>
+        {% if mensaje %}
+            <div class="mensaje">{{ mensaje }}</div>
+        {% endif %}
+        <form method="post">
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <button type="submit">Enviar instrucciones</button>
+        </form>
+        <a class="enlace" href="/login">Volver al inicio de sesión</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Docente</title>
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .logout-button {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            background: #e57373;
+            color: #fff;
+            padding: 0.7em 1.5em;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(58,74,107,0.04);
+            transition: background 0.2s, color 0.2s;
+        }
+        .logout-button:hover {
+            background: #b71c1c;
+        }
+        .panel-docente {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(58,74,107,0.10);
+            padding: 2.5em 2em 2em 2em;
+        }
+        .panel-docente h2 {
+            color: #3a4a6b;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        .panel-docente p {
+            text-align: center;
+            color: #223055;
+            margin-bottom: 2em;
+        }
+        .grupos-lista ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+        .grupos-lista li {
+            margin-bottom: 1.2em;
+        }
+        .grupo-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #eaf6ff;
+            color: #223055;
+            text-decoration: none;
+            padding: 1em 1.5em;
+            border-radius: 8px;
+            border: 1px solid #3a4a6b22;
+            font-size: 1.1em;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(58,74,107,0.04);
+        }
+        .grupo-link:hover {
+            background: #3a4a6b;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(58,74,107,0.10);
+        }
+        .grupo-nombre {
+            font-weight: bold;
+        }
+        .grupo-grado {
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+        .no-grupos {
+            text-align: center;
+            color: #888;
+            margin-top: 2em;
+        }
+        .no-grupos p {
+            margin-top: 1em;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('logout') }}" class="logout-button">Cerrar sesión</a>
+    <div class="panel-docente">
+        <h2>Panel de Docente</h2>
+        <p>Bienvenido, docente. Selecciona un grupo para ver a tus alumnos:</p>
+        <div class="grupos-lista">
+            {% if grupos and grupos|length > 0 %}
+                <ul>
+                    {% for grupo in grupos %}
+                        <li>
+                            <a class="grupo-link" href="{{ url_for('ver_alumnos_grupo', grupo_id=grupo[0]) }}">
+                                <span class="grupo-nombre">{{ grupo[1] }}</span>
+                                <span class="grupo-grado">Grado {{ grupo[2] }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="no-grupos">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" alt="Sin grupos" width="80" style="opacity:0.5;">
+                    <p>No tienes grupos asignados.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de usuario</title>
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .btn-inicio {
+            display: inline-block;
+            margin: 30px 0 0 30px;
+            background: #8da2c8;
+            color: #223055;
+            padding: 0.7em 1.5em;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(58,74,107,0.04);
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-inicio:hover {
+            background: #3a4a6b;
+            color: #fff;
+        }
+        .registro-container {
+            background: #fff;
+            max-width: 430px;
+            margin: 60px auto;
+            padding: 2.5em 2em 2em 2em;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(58,74,107,0.10);
+            border: 1px solid #3a4a6b22;
+        }
+        h2 {
+            color: #3a4a6b;
+            text-align: center;
+            margin-bottom: 1.5em;
+        }
+        .registro-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+        .registro-form input,
+        .registro-form select {
+            padding: 0.7em;
+            border: 1px solid #3a4a6b55;
+        }
+        .registro-form button {
+            background: #3a4a6b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 0.8em;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 1.5em;
+        }
+        .registro-form button:hover {
+            background: #223055;
+        }
+        .mensaje {
+            background: #eaf6ff;
+            border: 1px solid #3a4a6b55;
+            border-radius: 6px;
+            padding: 1.2em;
+            color: #223055;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        .registro-link {
+            text-align: center;
+            margin-top: 1em;
+        }
+        .registro-link a {
+            color: #3a4a6b;
+            text-decoration: underline;
+            font-size: 0.98em;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('login') }}" class="btn-inicio">&#8592; Inicio</a>
+    <div class="registro-container">
+        <h2>Registro de usuario</h2>
+        {% if mensaje %}
+            <div class="mensaje">{{ mensaje }}</div>
+        {% endif %}
+        <form method="post" class="registro-form">
+            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="text" name="apellido" placeholder="Apellido" required>
+            <select name="rol_id" required>
+                <option value="">Selecciona un rol</option>
+                {% for rol in roles %}
+                    <option value="{{ rol[0] }}">{{ rol[1] }}</option>
+                {% endfor %}
+            </select>
+            <select name="institucion_id" required>
+                <option value="">Selecciona una institución</option>
+                {% for inst in instituciones %}
+                    <option value="{{ inst[0] }}">{{ inst[1] }}</option>
+                {% endfor %}
+            </select>
+            <div class="registro-link">
+                <a href="{{ url_for('nueva_institucion') }}">¿No ves tu institución? Regístrala aquí</a>
+            </div>
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+    {% if redirigir_login %}
+    <script>
+        setTimeout(function() {
+            window.location.href = "{{ url_for('login') }}";
+        }, 3000); // 3000 ms = 3 segundos
+    </script>
+    {% endif %}
+</body>
+</html>

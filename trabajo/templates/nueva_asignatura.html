@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Asignatura</title>
+    <style>
+.panel-asignatura {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(58,74,107,0.10);
+    padding: 2.5em 2em 2em 2em;
+}
+.panel-asignatura h2 {
+    color: #3a4a6b;
+    text-align: center;
+    margin-bottom: 1em;
+}
+.panel-asignatura form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+}
+.panel-asignatura label {
+    color: #223055;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+}
+.panel-asignatura input[type="text"] {
+    padding: 0.7em;
+    border: 1px solid #3a4a6b55;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.2s;
+}
+.panel-asignatura input[type="text"]:focus {
+    border: 1.5px solid #3a4a6b;
+}
+.panel-asignatura button {
+    background: #3a4a6b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.panel-asignatura button:hover {
+    background: #223055;
+}
+.mensaje {
+    background: #eaf6ff;
+    border: 1px solid #3a4a6b55;
+    border-radius: 6px;
+    padding: 1.2em;
+    color: #223055;
+    text-align: center;
+    margin-bottom: 1em;
+}
+    </style>
+</head>
+<body>
+    <div class="panel-asignatura">
+        <h2>Registrar Nueva Asignatura</h2>
+        {% if mensaje %}
+            <div class="mensaje">{{ mensaje }}</div>
+        {% endif %}
+        <form method="post">
+            <label for="nombre">Nombre de la asignatura:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion">
+            <button type="submit">Registrar</button>
+        </form>
+        <div style="text-align:center; margin-top: 1.5em;">
+        <a href="{{ url_for('admin_dashboard') }}" style="
+            display: inline-block;
+            background: #8da2c8;
+            color: #223055;
+            padding: 0.7em 1.5em;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(58,74,107,0.04);
+            transition: background 0.2s, color 0.2s;
+        " onmouseover="this.style.background='#3a4a6b';this.style.color='#fff';"
+          onmouseout="this.style.background='#8da2c8';this.style.color='#223055';">
+            &#8592; Volver 
+        </a>
+    </div>
+    </div>
+</body>
+</html>
